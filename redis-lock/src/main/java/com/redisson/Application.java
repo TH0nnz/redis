@@ -15,7 +15,7 @@ public class Application {
 
     @Bean
     public Redisson redisson() {
-        // 此为单机模式
+        // 此為單機模式
         Config config = new Config();
         config.useSingleServer().setAddress("redis://192.168.0.60:6379").setDatabase(0);
         /*config.useClusterServers()

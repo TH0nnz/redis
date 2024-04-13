@@ -9,9 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 访问redis集群
+ * 訪問redis集群
  *
- * @author 图灵-诸葛老师
  */
 public class JedisClusterTest {
     public static void main(String[] args) throws IOException {
@@ -22,19 +21,19 @@ public class JedisClusterTest {
         config.setMinIdle(5);
 
         Set<HostAndPort> jedisClusterNode = new HashSet<HostAndPort>();
-        jedisClusterNode.add(new HostAndPort("192.168.0.61", 8001));
-        jedisClusterNode.add(new HostAndPort("192.168.0.62", 8002));
-        jedisClusterNode.add(new HostAndPort("192.168.0.63", 8003));
-        jedisClusterNode.add(new HostAndPort("192.168.0.61", 8004));
-        jedisClusterNode.add(new HostAndPort("192.168.0.62", 8005));
-        jedisClusterNode.add(new HostAndPort("192.168.0.63", 8006));
+        jedisClusterNode.add(new HostAndPort("10.211.55.21", 8001));
+        jedisClusterNode.add(new HostAndPort("10.211.55.22", 8002));
+        jedisClusterNode.add(new HostAndPort("10.211.55.23", 8003));
+        jedisClusterNode.add(new HostAndPort("10.211.55.24", 8004));
+        jedisClusterNode.add(new HostAndPort("10.211.55.25", 8005));
+        jedisClusterNode.add(new HostAndPort("10.211.55.26", 8006));
 
         JedisCluster jedisCluster = null;
         try {
-            //connectionTimeout：指的是连接一个url的连接等待时间
-            //soTimeout：指的是连接上一个url，获取response的返回等待时间
-            jedisCluster = new JedisCluster(jedisClusterNode, 6000, 5000, 10, "zhuge", config);
-            System.out.println(jedisCluster.set("cluster", "zhuge"));
+            //connectionTimeout：指的是連接一個url的連接等待時間
+            //soTimeout：指的是連接上一個url，獲取response的返回等待時間
+            jedisCluster = new JedisCluster(jedisClusterNode, 6000, 5000, 10, "123456", config);
+            System.out.println(jedisCluster.set("cluster", "Tom_cluster_test"));
             System.out.println(jedisCluster.get("cluster"));
         } catch (Exception e) {
             e.printStackTrace();

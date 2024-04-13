@@ -4,17 +4,36 @@ server:
 spring:
   redis:
     database: 0
-    timeout: 3000
-    password: zhuge
-      #    sentinel:    #哨兵模式
-      #      master: mymaster #主服务器所在集群名称
-    #      nodes: 192.168.0.60:26379,192.168.0.60:26380,192.168.0.60:26381
+    timeout: 5000
+    password: 123456
+#    sentinel: #哨兵模式
+#      master: mymaster #主服務器所在集群名稱
+#      nodes: 10.211.55.5:26379,10.211.55.5:26380,10.211.55.5:26381
     cluster:
-      nodes: 192.168.0.61:8001,192.168.0.62:8002,192.168.0.63:8003,192.168.0.61:8004,192.168.0.62:8005,192.168.0.63:8006
+      nodes:
+        - 10.211.55.21:8001
+        - 10.211.55.22:8002
+        - 10.211.55.23:8003
+        - 10.211.55.24:8004
+        - 10.211.55.25:8005
+        - 10.211.55.26:8006
+      max-redirects: 3
     lettuce:
       pool:
-        max-idle: 50
+        max-idle: 100
         min-idle: 10
-        max-active: 100
+        max-active: 1000
         max-wait: 1000
+#    host: localhost
 
+#    lettuce:
+#      cluster:
+#        refresh:
+#          adaptive: true
+#          period: 15s
+
+#
+#management:
+#  health:
+#    redis:
+#      enabled: false
